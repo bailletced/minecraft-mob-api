@@ -1,0 +1,9 @@
+name: mob-api
+version: '0.0.1'
+main: org.github.bailletced.MobApi
+api-version: '1.21'
+authors: [Bailletced]
+commands:
+  test:
+    description: Une commande simple qui de test
+    usage: /test
