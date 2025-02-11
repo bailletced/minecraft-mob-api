@@ -6,6 +6,9 @@ plugins {
 group = "org.github.bailletced"
 version = "0.0.1"
 
+val targetJavaVersion = 21
+val koinVersion = "4.0.2"
+
 repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/") {
@@ -19,9 +22,9 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("io.insert-koin:koin-core:$koinVersion")
 }
 
-val targetJavaVersion = 21
 kotlin {
     jvmToolchain(targetJavaVersion)
 }
