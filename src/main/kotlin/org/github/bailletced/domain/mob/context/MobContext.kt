@@ -6,7 +6,8 @@ import org.bukkit.entity.Entity
 data class MobContext(
     val entity: Entity,
     val spawnLocation: Location,
-    val maxRange: Long,
+    val targetMaxRange: Double,
+    val attackMaxRange: Double,
     var currentTarget: Entity?,
     val lastAttacker: Entity?,
 )

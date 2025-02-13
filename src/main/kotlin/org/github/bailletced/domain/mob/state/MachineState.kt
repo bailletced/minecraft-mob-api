@@ -10,9 +10,8 @@ class MachineState(
 //        context.conditions.update(context)
 
         // Vérification des transitions
-        val currentState = context.currentState
-        for (transition in currentState.transitions) {
-            if (transition.condition.test(context)) {
+        for (transition in context.transitions) {
+            if (transition.condition.test(context.mobContext)) {
                 context.currentState = transition.execute(context)
                 break
             }

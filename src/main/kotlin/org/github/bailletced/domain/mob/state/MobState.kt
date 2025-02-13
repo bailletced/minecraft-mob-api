@@ -1,8 +1,10 @@
 package org.github.bailletced.domain.mob.state
 
 import org.github.bailletced.domain.mob.behavior.MobBehavior
+import org.github.bailletced.domain.mob.condition.AlwaysTrueCondition
+import org.github.bailletced.domain.mob.condition.Condition
 
-abstract class MobState {
-    abstract val behaviors: List<MobBehavior>
-    abstract val transitions: List<TransitionState>
-}
+open class MobState(
+    open val behaviors: List<MobBehavior> = listOf(),
+    open val condition: Condition = AlwaysTrueCondition(),
+)

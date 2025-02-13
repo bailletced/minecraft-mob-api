@@ -1,12 +1,12 @@
 package org.github.bailletced.application.paper.command
 
-import org.bukkit.Bukkit
+import org.bukkit.Location
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
-import org.bukkit.entity.Mob
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
+import org.github.bailletced.infra.paper.mob.factory.TotoMobFactory
 
 class TestCommand(private val plugin: JavaPlugin) : CommandExecutor {
     override fun onCommand(
@@ -17,22 +17,18 @@ class TestCommand(private val plugin: JavaPlugin) : CommandExecutor {
     ): Boolean {
         sender.sendMessage("Bonjour ${sender.name} ! Bienvenue !")
 
-        val player = sender as Player
-        val world = player.world
-        val zombie = world.spawnEntity(player.location, org.bukkit.entity.EntityType.ZOMBIE) as Mob
+        val entity =
+            TotoMobFactory(plugin).createToto(
+                (sender as Player).world,
+                Location(
+                    sender.world,
+                    23.0,
+                    88.0,
+                    -61.0,
+                ),
+            )
 
-        val mobGoals = Bukkit.getMobGoals()
-        mobGoals.removeAllGoals(zombie)
-
-        zombie.pathfinder.moveTo(player)
-
-        Bukkit.getScheduler().runTaskLater(
-            plugin,
-            Runnable {
-                zombie.pathfinder.moveTo(player)
-            },
-            60L,
-        ) // 100 ticks = 5 secondes (20 ticks = 1 seconde)[1][2]
+        sender.sendMessage("spawned $entity")
 
         return true
     }

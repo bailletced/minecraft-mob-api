@@ -1,9 +1,9 @@
 package org.github.bailletced.domain.mob.condition
 
-import org.github.bailletced.domain.mob.context.StateContext
+import org.github.bailletced.domain.mob.context.MobContext
 
 interface Condition {
-    fun test(context: StateContext): Boolean
+    fun test(context: MobContext): Boolean
 
     infix fun and(other: Condition): Condition = AndCondition(this, other)
 

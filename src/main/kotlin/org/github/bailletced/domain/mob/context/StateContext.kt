@@ -1,10 +1,10 @@
 package org.github.bailletced.domain.mob.context
 
-import org.bukkit.Location
 import org.github.bailletced.domain.mob.state.MobState
+import org.github.bailletced.domain.mob.transition.TransitionState
 
 data class StateContext(
     val mobContext: MobContext,
-    val spawnLocation: Location,
+    val transitions: List<TransitionState> = listOf(),
     var currentState: MobState,
 )
